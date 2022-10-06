@@ -4,7 +4,7 @@ name: Deploy 🚀 Clima to Google Cloud Run (☁🏃)
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   deploy:
     name: Deploying 🚀 Clima
@@ -30,7 +30,7 @@ jobs:
 
       # Setup gcloud CLI
       - name: Deploy (🚀)
-        uses: google-github-actions/deploy-cloudrun@main
+        uses: google-github-actions/deploy-cloudrun@master
         with:
           service: 114881050086558697622
           image: gcr.io/githubaction-364720/114881050086558697622
