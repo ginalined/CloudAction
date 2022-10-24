@@ -10,29 +10,37 @@ jobs:
     name: Deploying 🚀 Clima
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+        - name: Install SSH Key
+          uses: shimataro/ssh-key-action@v2
+          with:
+            key: ${{ secrets.VM_KEY }} 
+            known_hosts: 'just-a-placeholder-so-we-dont-get-errors'
+        
+        - name: Adding Known Hosts
+          run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+#       - name: Checkout
+#         uses: actions/checkout@v2
 
-      # Build and push image to Google Container Registry
-      - name: Setting up
-        uses: google-github-actions/setup-gcloud@main
-        with:
-          version: '286.0.0'
-          service_account_key: ${{ secrets.GCP_SA_KEY_JSON }}
-          service_account_email: "githubactionmanager@githubaction-364720.iam.gserviceaccount.com"
-          project_id: githubaction-364720
+#       # Build and push image to Google Container Registry
+#       - name: Setting up
+#         uses: google-github-actions/setup-gcloud@main
+#         with:
+#           version: '286.0.0'
+#           service_account_key: ${{ secrets.GCP_SA_KEY_JSON }}
+#           service_account_email: "githubactionmanager@githubaction-364720.iam.gserviceaccount.com"
+#           project_id: githubaction-364720
 
-      - name: Building (🏗)
-        run: |-
-          gcloud builds submit \
-            --tag gcr.io/githubaction-364720/cloudaction
+#       - name: Building (🏗)
+#         run: |-
+#           gcloud builds submit \
+#             --tag gcr.io/githubaction-364720/cloudaction
 
-      # Setup gcloud CLI
-      - name: Deploy (🚀)
-        uses: google-github-actions/deploy-cloudrun@main
-        with:
-          service: cloudaction
-          image: gcr.io/githubaction-364720/cloudaction
-          region: us-central1
-          credentials: ${{ secrets.GCP_SA_KEY_JSON }}
-          project_id: githubaction-364720
+#       # Setup gcloud CLI
+#       - name: Deploy (🚀)
+#         uses: google-github-actions/deploy-cloudrun@main
+#         with:
+#           service: cloudaction
+#           image: gcr.io/githubaction-364720/cloudaction
+#           region: us-central1
+#           credentials: ${{ secrets.GCP_SA_KEY_JSON }}
+#           project_id: githubaction-364720
