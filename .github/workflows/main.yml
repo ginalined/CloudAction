@@ -30,6 +30,12 @@ jobs:
         - name: Enter Remote Server
           run: gcloud compute ssh --zone "us-central1-a" "navin@instance-1"  --project "metaverse-363005"
           
+        - name: Test Server
+          run: pwd
+        
+        - name: Create File 
+          run: mkdir hello
+          
         
 #       - name: Checkout
 #         uses: actions/checkout@v2
