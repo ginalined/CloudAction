@@ -30,7 +30,7 @@ jobs:
     
           
         - name: Deploy with rsync
-          run: rsync -avz ./ ${{ secrets.SSH_HOSTNAME }}@${{ secrets.SSH_HOST }}:/
+          run: rsync -avz -e "ssh -p 22" ./project/ ${{ secrets.SSH_HOSTNAME }}@${{ secrets.SSH_HOST }}:/home/
 
           
 #         - name: Enter Remote Server
