@@ -18,6 +18,9 @@ jobs:
         
         - name: Adding Known Hosts
           run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+          
+        - name: Enter Remote Server
+          run: gcloud compute ssh --zone "us-central1-a" "navin@instance-1"  --project "metaverse-363005"
 #       - name: Checkout
 #         uses: actions/checkout@v2
 
