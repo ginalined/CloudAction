@@ -27,6 +27,9 @@ jobs:
             service_account_email: "metaverse-serv@metaverse-363005.iam.gserviceaccount.com"
             project_id:  metaverse-363005
             
+        - name: Check
+          run: ls
+            
     
           
         - name: Deploy with rsync
