@@ -30,7 +30,7 @@ jobs:
     
           
         - name: Deploy with rsync
-          run: rsync -avz -e "ssh -p 22" ./project/ ${{ secrets.SSH_HOSTNAME }}@${{ secrets.SSH_HOST }}:/home/
+          run: rsync -avz -e "ssh -p 22" ./ ${{ secrets.SSH_HOSTNAME }}@${{ secrets.SSH_HOST }}:/home/project
 
           
 #         - name: Enter Remote Server
@@ -45,7 +45,7 @@ jobs:
             key: ${{ secrets.ED_KEY }} 
             port: 22
             script: |
-              pwd
+              ls
         
 #       - name: Checkout
 #         uses: actions/checkout@v2
