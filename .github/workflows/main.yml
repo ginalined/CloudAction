@@ -28,7 +28,7 @@ jobs:
             project_id:  metaverse-363005
             
         - name: Check
-          run: ls
+          run: cat main.py
             
     
           
