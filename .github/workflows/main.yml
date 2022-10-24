@@ -19,8 +19,18 @@ jobs:
         - name: Adding Known Hosts
           run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
           
+        - name: Setting up
+          uses: google-github-actions/setup-gcloud@main
+          with:
+            version: '286.0.0'
+            service_account_key: ${{ secrets.GCP_SA_KEY_JSON }}
+            service_account_email: "githubactionmanager@githubaction-364720.iam.gserviceaccount.com"
+            project_id: githubaction-364720
+          
         - name: Enter Remote Server
           run: gcloud compute ssh --zone "us-central1-a" "navin@instance-1"  --project "metaverse-363005"
+          
+        
 #       - name: Checkout
 #         uses: actions/checkout@v2
 
