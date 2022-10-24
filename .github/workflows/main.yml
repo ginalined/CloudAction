@@ -48,6 +48,9 @@ jobs:
             key: ${{ secrets.ED_KEY }} 
             port: 22
             script: |
+              cd project
+              git fetch origin master
+              git reset --hard FETCH_HEAD
               ls
         
 #       - name: Checkout
