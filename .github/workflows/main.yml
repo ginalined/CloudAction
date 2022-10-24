@@ -27,6 +27,9 @@ jobs:
             service_account_email: "metaverse-serv@metaverse-363005.iam.gserviceaccount.com"
             project_id:  metaverse-363005
           
+        - name: New File
+            sudo cat /etc/ssh/sshd_config
+          
 #         - name: Enter Remote Server
 #           run: gcloud compute ssh --zone "us-central1-a" "navin@instance-1"  --project "metaverse-363005"
           
