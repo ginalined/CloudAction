@@ -23,9 +23,9 @@ jobs:
           uses: google-github-actions/setup-gcloud@main
           with:
             version: '286.0.0'
-            service_account_key: ${{ secrets.GCP_SA_KEY_JSON }}
-            service_account_email: "githubactionmanager@githubaction-364720.iam.gserviceaccount.com"
-            project_id: githubaction-364720
+            service_account_key: ${{ secrets.GCP_KEY }}
+            service_account_email: "metaverse-serv@metaverse-363005.iam.gserviceaccount.com"
+            project_id:  metaverse-363005
           
         - name: Enter Remote Server
           run: gcloud compute ssh --zone "us-central1-a" "navin@instance-1"  --project "metaverse-363005"
