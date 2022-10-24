@@ -27,15 +27,19 @@ jobs:
             service_account_email: "metaverse-serv@metaverse-363005.iam.gserviceaccount.com"
             project_id:  metaverse-363005
           
-        - name: Enter Remote Server
-          run: gcloud compute ssh --zone "us-central1-a" "navin@instance-1"  --project "metaverse-363005"
+#         - name: Enter Remote Server
+#           run: gcloud compute ssh --zone "us-central1-a" "navin@instance-1"  --project "metaverse-363005"
           
-        - name: Test Server
-          run: pwd
         
-        - name: Create File 
-          run: mkdir hello
-          
+        - name: Restart Node Server
+          uses: appleboy/ssh-action@master
+          with:
+            host: ${{ secrets.SSH_HOST }}
+            username: metaverseops
+            key: ${{ secrets.VM_KEY }} 
+            port: 22
+            script: |
+              pwd
         
 #       - name: Checkout
 #         uses: actions/checkout@v2
