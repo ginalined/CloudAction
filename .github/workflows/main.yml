@@ -30,7 +30,7 @@ jobs:
     
           
         - name: Deploy with rsync
-          run: rsync -avz -e "ssh -p 22" ./ ${{ secrets.SSH_HOSTNAME }}@${{ secrets.SSH_HOST }}:/home//home/metaverseops/project/
+          run: rsync -avz -e "ssh -p 22" ./ ${{ secrets.SSH_HOSTNAME }}@${{ secrets.SSH_HOST }}:/home/metaverseops/project/
 
           
 #         - name: Enter Remote Server
